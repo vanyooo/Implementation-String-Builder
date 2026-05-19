@@ -1,133 +1,29 @@
 package com.zimin;
 
-public class App 
-{
-    public static void main( String[] args ) {
+import com.zimin.utils.ArrayUtils;
+import com.zimin.utils.ExampleInteger;
+import com.zimin.utils.ExampleString;
 
-        System.out.println("=== CREATE ===");
+import java.util.Arrays;
+import java.util.Map;
 
-        MyStringBuilder builder = new MyStringBuilder("Rot");
+public class App {
+    public static void main(String[] args) {
 
-        System.out.println(builder);
+        Integer[] ar = {1, 2, 3, 4, 5, 2, 3, 8, 8, 8, 8, 8};
+        String[] array = {"a", "b", "a"};
 
+        ExampleString exampleString = new ExampleString();
+        String[] result = ArrayUtils.arrayMapping(array, exampleString);
+        System.out.println(Arrays.toString(result));
 
+        ExampleInteger exampleInteger = new ExampleInteger();
+        Integer[] integers = ArrayUtils.arrayMapping(ar, exampleInteger);
+        System.out.println(Arrays.toString(integers));
 
-        System.out.println("\n=== APPEND ===");
+        Map<Integer, Integer> integerIntegerMap = ArrayUtils.countOccurrences(ar);
+        System.out.println(integerIntegerMap);
 
-        builder.append("serot");
-
-        System.out.println(builder);
-
-
-
-        System.out.println("\n=== UNDO APPEND ===");
-
-        builder.undo();
-
-        System.out.println(builder);
-
-
-
-        System.out.println("\n=== INSERT ===");
-
-        builder.insert(3, " is cool");
-
-        System.out.println(builder);
-
-
-
-        System.out.println("\n=== UNDO INSERT ===");
-
-        builder.undo();
-
-        System.out.println(builder);
-
-
-
-        System.out.println("\n=== DELETE ===");
-
-        builder.append("serot");
-
-        builder.delete(3, 6);
-
-        System.out.println(builder);
-
-
-
-        System.out.println("\n=== UNDO DELETE ===");
-
-        builder.undo();
-
-        System.out.println(builder);
-
-
-
-        System.out.println("\n=== REVERSE ===");
-
-        builder.reverse();
-
-        System.out.println(builder);
-
-
-
-        System.out.println("\n=== UNDO REVERSE ===");
-
-        builder.undo();
-
-        System.out.println(builder);
-
-
-
-        System.out.println("\n=== MULTIPLE UNDO ===");
-
-        builder.append(" A");
-        builder.append(" B");
-        builder.append(" C");
-
-        System.out.println(builder);
-
-        builder.undo();
-        System.out.println(builder);
-
-        builder.undo();
-        System.out.println(builder);
-
-        builder.undo();
-        System.out.println(builder);
-
-
-
-        System.out.println("\n=== NULL APPEND ===");
-
-        builder.append(null);
-
-        System.out.println(builder);
-
-        builder.undo();
-
-        System.out.println(builder);
-
-
-
-        System.out.println("\n=== CHAINING ===");
-
-        builder.append("1")
-                .append("2")
-                .append("3");
-
-        System.out.println(builder);
-
-
-
-        System.out.println("\n=== UNDO CHAINING ===");
-
-        builder.undo();
-        System.out.println(builder);
-
-        builder.undo();
-        System.out.println(builder);
-
-        builder.undo();
-        System.out.println(builder);
+        System.out.println(ArrayUtils.countOccurrences(array));
     }
 }
